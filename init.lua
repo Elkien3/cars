@@ -591,7 +591,7 @@ for id, color in pairs (carlist) do
 			if self.driverseat then
 				self.driverseat:set_attach(self.object, "", {x = -4, y = 3, z = 3}, {x = 0, y = 0, z = 0})
 			end--]]
-			if not self.licenseplate then
+			if not self.licenseplate and minetest.get_modpath("signs") ~= nil then
 				self.licenseplate = minetest.add_entity(pos, "cars:licenseplate")
 			end
 			if self.licenseplate then
@@ -741,7 +741,7 @@ minetest.register_entity("cars:licenseplate", {
 	collide_with_objects = false,
     on_activate = function(self)
 		minetest.after(.1, function()
-			if not self.object:get_attach() then
+			if not self.object:get_attach() or minetest.get_modpath("signs") == nil then
 				self.object:remove()
 			else
 				self.object:set_armor_groups({immortal = 1})
