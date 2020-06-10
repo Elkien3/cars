@@ -318,7 +318,7 @@ local function car_step(self, dtime)
 						if passengers.player == obj then goto next end
 					end
 					local puncher = self.passengers[1].player
-					if not puncher then puncher = self end
+					if not puncher then puncher = self.object end
 					local dmg = ((vector.length(self.lastv)-4)/(20-4))*20
 					local name = obj:get_player_name()
 					if default.player_attached[name] then dmg = dmg*.5 end
